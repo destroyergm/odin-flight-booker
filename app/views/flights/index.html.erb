@@ -1,0 +1,7 @@
+<h1>Odin Flight Booker</h1>
+
+<%= form_tag("/search", method: "get") do%>
+	<% options = @airports.map { |e| [e.code, e.id] } %>
+	<%= select_tag :airports, options_for_select(options)%>
+
+<% end %>

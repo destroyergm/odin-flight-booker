@@ -3,5 +3,5 @@ class Flight < ActiveRecord::Base
 		class_name: 'Airport'
 	belongs_to :to_airport,
 		class_name: 'Airport'
-		
+	
 end
