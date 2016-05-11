@@ -19,4 +19,10 @@ class AirportTest < ActiveSupport::TestCase
 		@airport.code = "a" * 6
 		assert_not @airport.valid? 
 	end
+
+	test 'airport should be unique' do
+		@airport.save
+		second_airport = Airport.new(code: "FOO")
+		assert_not second_airport.valid?
+	end
 end
