@@ -14,4 +14,9 @@ class AirportTest < ActiveSupport::TestCase
 		@airport.code = "   "
 		assert_not @airport.valid?
 	end
+
+	test 'code should not be too long' do
+		@airport.code = "a" * 6
+		assert_not @airport.valid? 
+	end
 end
