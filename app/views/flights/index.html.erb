@@ -2,6 +2,18 @@
 
 <%= form_tag("/search", method: "get") do%>
 	<% options = @airports.map { |e| [e.code, e.id] } %>
-	<%= select_tag :airports, options_for_select(options)%>
+	<% date_options = @flights.map { |e| [ e.datetime.strftime("%d/%m/%Y") ,e.id] } %>
+
+	<%= label_tag :airports_from, "From: " %>
+	<%= select_tag :airports_from, options_for_select(options)%>
+
+	<%= label_tag :airports_to, "To: " %>
+	<%= select_tag :airports_to, options_for_select(options) %>
+
+	<%= label_tag :passangers, "Number of passangers: " %>
+	<%= select_tag :passangers, options_for_select([[1,1],[2,2],[3,3],[4,4]]) %>
+
+	<%= label_tag :date, "Date" %>
+	<%= select_tag :date, options_for_select(date_options) %>
 
 <% end %>
