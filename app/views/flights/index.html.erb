@@ -1,19 +1,24 @@
 <h1>Odin Flight Booker</h1>
 
-<%= form_tag("/search", method: "get") do%>
+<%= form_for(:search ,url: flights_path, method: "get") do |f| %>
 	<% options = @airports.map { |e| [e.code, e.id] } %>
 	<% date_options = @flights.map { |e| [ e.datetime.strftime("%d/%m/%Y") ,e.id] } %>
 
-	<%= label_tag :airports_from, "From: " %>
-	<%= select_tag :airports_from, options_for_select(options)%>
+	<%= f.label :airports_from, "From: " %>
+	<%= f.select :airports_from, options_for_select(options)%>
 
-	<%= label_tag :airports_to, "To: " %>
-	<%= select_tag :airports_to, options_for_select(options) %>
+	<%= f.label :airports_to, "To: " %>
+	<%= f.select :airports_to, options_for_select(options) %>
 
-	<%= label_tag :passangers, "Number of passangers: " %>
-	<%= select_tag :passangers, options_for_select([[1,1],[2,2],[3,3],[4,4]]) %>
+	<%= f.label :passangers, "Number of passangers: " %>
+	<%= f.select :passangers, options_for_select([[1,1],[2,2],[3,3],[4,4]]) %>
 
-	<%= label_tag :date, "Date" %>
-	<%= select_tag :date, options_for_select(date_options) %>
+	<%= f.label :date, "Date" %>
+	<%= f.select :date, options_for_select(date_options) %>
 
+	<%= f.submit("Search")%>
+<% end %>
+
+<% if params_exist? %>
+	<h2>Flights found: </h2>
 <% end %>
