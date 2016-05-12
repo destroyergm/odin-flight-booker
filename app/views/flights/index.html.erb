@@ -36,6 +36,7 @@
 				<th>From Airport</th>
 				<th>To Airport</th>
 				<th>Date</th>
+				<th>Duration</th>
 			</tr>
 				<% @result.each do |flight| %>
 				<tr>
@@ -43,7 +44,8 @@
 					<th><%= flight.id %></th>
 					<th><%= flight.from_airport.code %></th>
 					<th><%= flight.to_airport.code %></th>
-					<th><%= flight.datetime.strftime("%d/%m/%Y at %H:%mra") %></th>
+					<th><%= flight.datetime.strftime("%d/%m/%Y at %H:%m ") %></th>
+					<th><%= "#{flight.duration}h" %></th>
 				</tr>
 				<% end %>
 			</table>
