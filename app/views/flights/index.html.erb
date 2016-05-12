@@ -2,7 +2,8 @@
 
 <%= form_for(:search ,url: flights_path, method: "get") do |f| %>
 	<% options = @airports.map { |e| [e.code, e.id] } %>
-	<% date_options = @flights.map { |e| [ e.datetime.strftime("%d/%m/%Y") ,e.id] } %>
+	<% date_options = @flights.map { |e| [ e.datetime.strftime("%d/%m/%Y") ,
+		e.datetime.strftime("%d-%m-%Y")] } %>
 
 	<%= f.label :airports_from, "From: " %>
 	<%= f.select :airports_from, options_for_select(options)%>
@@ -20,5 +21,28 @@
 <% end %>
 
 <% if params_exist? %>
+	<style>
+
+	</style>
 	<h2>Flights found: </h2>
+	<% if @result.nil? %>
+		<p>No results found</p>
+	<% else %>
+			<table>
+			<tr>
+				<th>Flight ID</th>
+				<th>From Airport</th>
+				<th>To Airport</th>
+				<th>Date</th>
+			</tr>
+				<% @result.each do |flight| %>
+				<tr>
+					<th><%= flight.id %></th>
+					<th><%= flight.from_airport.code %></th>
+					<th><%= flight.to_airport.code %></th>
+					<th><%= flight.datetime.strftime("%d/%m/%Y at %H:%m") %></th>
+				</tr>
+				<% end %>
+			</table>
+		<% end %>
 <% end %>
