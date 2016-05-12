@@ -25,11 +25,13 @@
 
 	</style>
 	<h2>Flights found: </h2>
-	<% if @result.nil? %>
+	<% if @result.empty? %>
 		<p>No results found</p>
 	<% else %>
+	<%= form_tag '#', method: 'get' do %>
 			<table>
 			<tr>
+				<th>Select a Flight</th>
 				<th>Flight ID</th>
 				<th>From Airport</th>
 				<th>To Airport</th>
@@ -37,12 +39,15 @@
 			</tr>
 				<% @result.each do |flight| %>
 				<tr>
+					<th><%= radio_button("flight","flight_id", flight.id) %></th>
 					<th><%= flight.id %></th>
 					<th><%= flight.from_airport.code %></th>
 					<th><%= flight.to_airport.code %></th>
-					<th><%= flight.datetime.strftime("%d/%m/%Y at %H:%m") %></th>
+					<th><%= flight.datetime.strftime("%d/%m/%Y at %H:%mra") %></th>
 				</tr>
 				<% end %>
 			</table>
+			<%= submit_tag "Select Flight" %>
+			<% end %>
 		<% end %>
 <% end %>
