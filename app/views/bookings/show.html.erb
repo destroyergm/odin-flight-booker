@@ -6,9 +6,11 @@
 	<li>To: <%= @booking.flight.to_airport.code %></li>
 	<li>Passanger count: <%= @booking.passangers.count %></li>
 	<h3>Booked passangers: </h3>
+	<ol>
 	<% @booking.passangers.each do |passanger| %>
-		<ol>
+		
 			<li><%= passanger.name %> | <%= passanger.email %></li>
-		</ol>
+
 	<% end %>
+	</ol>
 </ul>
