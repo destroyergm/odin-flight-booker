@@ -7,6 +7,7 @@ class FlightsController < ApplicationController
 			to_airport = params[:search][:airports_to]
 			date = params[:search][:date]
 			@result = Flight.from_to(from_airport, to_airport).filter_date(date)
+			@passangers = params[:search][:passangers]
 		end
 		@airports = Airport.all
 		@flights = Flight.all

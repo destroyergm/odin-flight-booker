@@ -1,0 +1,26 @@
+<h1>Flight information</h1>
+<ul>
+	<li>Flight ID: <%= @flight.id %></li>
+	<li>From: <%= @flight.from_airport.code %></li>
+	<li>To: <%= @flight.to_airport.code %></li>
+	<li>Passangers: <%= @passanger_count %></li>
+</ul>
+
+<h1>Enter passanger information</h1>
+<%= form_for(@booking) do |f|%>
+
+	<%= f.hidden_field :flight_id %>
+
+	<%= f.fields_for :passangers do |passanger_fields| %>
+		<section>Passanger <%= passanger_fields.index + 1 %></section>
+
+		<%= passanger_fields.label :name %>
+		<%= passanger_fields.text_field :name %>
+
+		<%= passanger_fields.label :email %>
+		<%= passanger_fields.text_field :email %>
+
+	<% end %>
+
+	<%= f.submit "Book Flight" %>
+<% end %>

@@ -26,6 +26,12 @@ Flight.create(from_airport_id: 1, to_airport_id: 5,
 
 Flight.create(from_airport_id: 2, to_airport_id: 3, 
 	datetime: "18:00 14/3/2016", duration: 1)
+Flight.create(from_airport_id: 2, to_airport_id: 3, 
+	datetime: "19:00 14/3/2016", duration: 1)
+Flight.create(from_airport_id: 2, to_airport_id: 3, 
+	datetime: "20:00 14/3/2016", duration: 1)
+Flight.create(from_airport_id: 2, to_airport_id: 3, 
+	datetime: "21:00 14/3/2016", duration: 1)
 Flight.create(from_airport_id: 2, to_airport_id: 4, 
 	datetime: "18:00 15/3/2016", duration: 12)
 Flight.create(from_airport_id: 2, to_airport_id: 5, 

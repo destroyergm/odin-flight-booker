@@ -28,7 +28,8 @@
 	<% if @result.empty? %>
 		<p>No results found</p>
 	<% else %>
-	<%= form_tag '#', method: 'get' do %>
+	<%= form_tag new_booking_path, method: 'get' do %>
+		<%= hidden_field "flight","passangers", value: @passangers %>
 			<table>
 			<tr>
 				<th>Select a Flight</th>

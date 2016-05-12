@@ -1,0 +1,14 @@
+<h1>Thanks for using our services</h1>
+<h2>Your ticket information: </h2>
+<ul>
+	<li>Flight ID: <%= @booking.flight_id %></li>
+	<li>From: <%= @booking.flight.from_airport.code %></li>
+	<li>To: <%= @booking.flight.to_airport.code %></li>
+	<li>Passanger count: <%= @booking.passangers.count %></li>
+	<h3>Booked passangers: </h3>
+	<% @booking.passangers.each do |passanger| %>
+		<ol>
+			<li><%= passanger.name %> | <%= passanger.email %></li>
+		</ol>
+	<% end %>
+</ul>
