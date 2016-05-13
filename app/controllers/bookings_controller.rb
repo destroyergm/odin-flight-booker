@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
 			p.save
 		end
 
+		PassengerMailer.welcome_email(@booking).deliver_now
 		redirect_to @booking
 	end
 
